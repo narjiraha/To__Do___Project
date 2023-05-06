@@ -1,0 +1,178 @@
+body {
+  background-color: black;
+}
+
+.container {
+  max-width: 95%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+h1 {
+  color: white;
+}
+
+#add-task {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  /* align the button to the right */
+  padding-top: 10px;
+  margin-right: 260px;
+  /* add margin to the right to space it out from the "List" text */
+}
+
+#add-task button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.5rem;
+  margin-right: 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+#add-task button:hover {
+  background-color: #0056b3;
+}
+
+#todo-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.task-card {
+  position: relative;
+  /* Set the parent element to relative position */
+  width: calc(20% - 50px);
+  height: 200px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 30px;
+  backdrop-filter: blur(5px) hue-rotate(90deg);
+}
+
+.task-card p {
+  margin: 0;
+}
+
+.add-subtask {
+  position: absolute;
+  /* Set the child element to absolute position */
+  bottom: 10px;
+  /* Position the button 10px from the bottom */
+  right: 10px;
+  /* Position the button 10px from the right */
+  background-color: rgb(0, 4, 255);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 14px;
+  line-height: 30px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.delete-task {
+  position: absolute;
+  /* Set the child element to absolute position */
+  bottom: 10px;
+  /* Position the button 10px from the bottom */
+  right: 50px;
+  /* Position the button 50px from the right */
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 14px;
+  line-height: 30px;
+  text-align: center;
+  cursor: pointer;
+}
+
+
+.delete-task:hover {
+  background-color: #d32f2f;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: white;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 30%;
+  height: 30%;
+  border-radius: 30px;
+  /* Add border radius */
+  transition: all 0.2s ease-in-out;
+  /* Add transition effect */
+}
+
+.modal-content button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  display: row;
+}
+
+.modal-content button.close {
+  background-color: #f44336;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+}
+
+#submit-task {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    max-width: 100%;
+    margin: 0;
+    text-align: left;
+  }
+
+  .task-card {
+    width: 100%;
+    height: 100px;
+    margin: 10px 0;
+  }
+}
