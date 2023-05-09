@@ -1,42 +1,68 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Todo App</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <div class="container">
-        <h1>
-            <span class="task-text">Tasks</span> <span class="list-text">List</span>
-          </h1>
+
+<head>
+  <title>Todo App</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<script src="https://kit.fontawesome.com/c3f76b84b2.js" crossorigin="anonymous"></script>
+
+<body>
+  <div class="container">
+    <div class="navbar">
+      <h1>
+        <span class="task-text">Tasks</span> <span class="list-text">List</span>
+      </h1>
       <div id="add-task">
         <button>+</button></a>
-        <span>Add New Task</span>
+        <h2><span>Add New Task</span></h2>
       </div>
-      <ul id="todo-list">
-        
-        <!-- Task cards will be added here -->
-      </ul>
     </div>
 
-    <div class="modal" id="modal">
-      <div class="modal-content">
-        <h2>Add Task</h2>
-        <input type="text" id="task" placeholder="Enter task..." />
-        <button id="submit-task">OK</button>
+    <ul id="todo-list">
+      <!-- Task cards will be added here -->
+    </ul>
+  </div>
+
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <h2 id="add_newList">Add New List</h2>
+      <div class="input_field">
+        <input type="text" id="task" placeholder="Add New List" />
+      </div>
+      <div class="add_close_btn">
+        <button id="submit-task">Add</button>
         <button class="close">Close</button>
       </div>
     </div>
-    
-    <div class="modal" id="subtask-modal">
-      <div class="modal-content">
-        <h2>Add Subtask</h2>
-        <input type="text" id="subtask" placeholder="Enter subtask..." />
-        <button id="submit-subtask">OK</button>
+  </div>
+
+  <div class="singleCard" id="singleCard">
+    <div class="IconHeading">
+      <i class="fa-solid fa-circle-chevron-left" style="color: #ffffff; font-size: 40px;"></i>
+      <h1 id="subTaskTitle"></h1>
+      <img src="./Images/plus.png" style="height:40px">
+    </div>
+
+    <div id="SubSingleCard">
+
+    </div>
+
+  </div>
+
+  <!-- subtask popup -->
+  <div class="modal" id="subtask-modal">
+    <div class="modal-content">
+      <h2 class="subtask_modal_heading">Add New List</h2>
+      <input type="text" id="subtask" placeholder="Enter subtask..." />
+      <div class="subtask_popup_btn">
+        <button id="submit-subtask">Add</button>
         <button class="subtask-close">Close</button>
       </div>
     </div>
-    
-    <script src="app.js"></script>
-  </body>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
 </html>

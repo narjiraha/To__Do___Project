@@ -12,20 +12,43 @@ const subtaskClose = document.querySelector('.subtask-close');
 const subtaskSubmitButton = document.getElementById('submit-subtask');
 const subtaskInput = document.getElementById('subtask');
 
+
+// single cardRender
+const singleCard = document.getElementById('singleCard');
+const subSingleCard = document.getElementById('SubSingleCard');
+function single() {
+  if (singleCard.style.display === "block") {
+    singleCard.style.display = "none"
+  } else {
+    singleCard.style.display = "block"
+  }
+}
+singleCard.appendChild(subSingleCard);
+
+
 // Function to create a new task card
 function createTaskCard(task) {
+  console.log(task)
   // Create a new task card
   const taskCard = document.createElement('div');
   taskCard.classList.add('task-card');
 
   // Create task name element and add to card
-  const taskName = document.createElement('p');
+  const subtaskHaeading = document.getElementById('subTaskTitle');
+  const taskName = document.createElement('h2');
   taskName.innerText = task;
   taskCard.appendChild(taskName);
 
-    // Create a horizontal line and add to card
-    const hr = document.createElement('hr');
-    taskCard.appendChild(hr);
+  taskName.addEventListener("click", () => {
+    single();
+    subtaskHaeading.innerText = task;
+    // console.log("hh");
+    subSingleCard.appendChild(taskCard);
+  });
+
+  // Create a horizontal line and add to card
+  const hr = document.createElement('hr');
+  taskCard.appendChild(hr);
 
   // Create subtask list element and add to card
   const subtaskList = document.createElement('ul');
@@ -33,17 +56,28 @@ function createTaskCard(task) {
 
   // Create add subtask button element and add to card
   const addSubtaskButton = document.createElement('button');
+  const imageAdd = document.createElement('img');
+  imageAdd.src = 'Images/add.png';
+  imageAdd.style.marginRight = '10px';
+  addSubtaskButton.appendChild(imageAdd);
+
+  const imageDel = document.createElement('button');
+  imageDel.src = "Images/remove.png";
+  imageDel.style.marginRight = '10px';
+  addSubtaskButton.appendChild(imageDel);
+
+
   addSubtaskButton.classList.add('add-subtask');
   addSubtaskButton.addEventListener('click', () => {
     // Open subtask modal
     subtaskModal.style.display = 'block';
     // Call the createSubtaskItem function and pass the addSubtaskButton variable using a closure
     subtaskSubmitButton.onclick = function () {
-      const subtask = subtaskInput.value.trim();
-      if (subtask === '') {
-        alert('Please enter a subtask.');
-        return;
-      }
+      const subtask = subtaskInput.value;
+      // if (subtask === '') {
+      //   alert('Please enter a subtask.');
+      //   return;
+      // }
       createSubtaskItem(subtask, addSubtaskButton);
       subtaskInput.value = '';
       subtaskModal.style.display = 'none';
@@ -51,7 +85,6 @@ function createTaskCard(task) {
   });
 
   taskCard.appendChild(addSubtaskButton);
-
   // Create delete button element and add to card
   const deleteButton = document.createElement('button');
   deleteButton.classList.add('delete-task');
@@ -65,7 +98,7 @@ function createTaskCard(task) {
 
 function createSubtaskItem(subtask, addSubtaskButton) {
   // Create subtask item element and add to list
-  const subtaskItem = document.createElement('span');
+  const subtaskItem = document.createElement('ul');
   subtaskItem.innerText = subtask;
   subtaskItem.classList.add('subtask');
 
@@ -73,6 +106,12 @@ function createSubtaskItem(subtask, addSubtaskButton) {
   const doneButton = document.createElement('button');
   doneButton.innerText = 'Done';
   doneButton.classList.add('done-button');
+  doneButton.style.backgroundColor = 'blue';
+  doneButton.style.borderRadius = '10px';
+  doneButton.style.border = "none";
+  doneButton.style.width = "60px";
+  doneButton.style.height = "30px";
+  doneButton.style.cursor = "pointer";
   doneButton.addEventListener('click', () => {
     subtaskItem.style.textDecoration = 'line-through';
     doneButton.parentNode.removeChild(doneButton);
@@ -113,10 +152,10 @@ window.addEventListener('click', (event) => {
 
 submitTaskButton.addEventListener('click', () => {
   const task = taskInput.value.trim();
-  if (task === '') {
-    alert('Please enter a task.');
-    return;
-  }
+  // if (task === '') {
+  //   alert('Please enter a task.');
+  //   return;
+  // }
   // Create a new task card and add to the todo list
   const taskCard = createTaskCard(task);
   todoList.appendChild(taskCard);
@@ -132,6 +171,7 @@ subtaskSubmitButton.addEventListener('click', () => {
     alert('Please enter a subtask.');
     return;
   }
+
   // Create a new subtask item and add to the task card
   createSubtaskItem(subtask, addSubtaskButton);
   // Clear the input field and close the modal
